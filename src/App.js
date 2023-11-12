@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Background from './components/background/Background';
+import Gender from './components/onboarding/Gender';
+import Start from './components/start/Start';
+import Age from './components/onboarding/Age';
+import WriteDiary from './components/writediary/WriteDiary';
+import CheckDiary from './components/checkdiary/CheckDiary';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Background />} >
+            <Route path='/' element={<Start />} />
+            <Route path='/onboarding/gender' element={<Gender />} />
+            <Route path='/onboarding/age' element={<Age />} />
+            <Route path='/write' element={<WriteDiary />} />
+            <Route path='/check' element={<CheckDiary />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
